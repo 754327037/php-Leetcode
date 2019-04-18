@@ -77,8 +77,9 @@ class Solution
         while($l1 || $l2){
             $l1v = $l1->val ? $l1->val : 0;
             $l2v = $l2->val  ? $l2->val : 0;
+            $val = ($l1v + $l2v + $add) % 10;
             $add = intval(($l1v + $l2v + $add) / 10);
-            $current->next = new ListNode(($l1v + $l2v + $add) % 10);   //将当前数插入链表尾部
+            $current->next = new ListNode($val);   //将当前数插入链表尾部
             $current = $current->next;    //修改当前指向的节点
             if($l1){
                 $l1 = $l1->next;
@@ -91,8 +92,6 @@ class Solution
             $current->next = new ListNode($add);    //add大于0及最后两数相加大于等于10向前进一位
         }
         return $list->next;    //初始化链表时传入了一个0注意去掉
-
-
     }
 }
 
